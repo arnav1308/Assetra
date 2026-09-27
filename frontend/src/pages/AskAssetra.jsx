@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useChat } from '../context/ChatContext';
 import { Send, Bot, User, Sparkles } from 'lucide-react';
+import ReactMarkdown from "react-markdown";
 
 export default function AskAssetra() {
     const { messages, sendMessage, isLoading, closeChat } = useChat();
@@ -51,7 +52,7 @@ export default function AskAssetra() {
                                     </div>
                                 )}
                                 <div className={`max-w-[80%] rounded-2xl p-4 ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-slate-900 border border-slate-800 text-slate-200'}`}>
-                                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                                    <p className="whitespace-pre-wrap"><ReactMarkdown>{msg.content}</ReactMarkdown></p>
                                 </div>
                                 {msg.role === 'user' && (
                                     <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center shrink-0 border border-slate-700">

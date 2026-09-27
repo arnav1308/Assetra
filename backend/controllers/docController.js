@@ -20,6 +20,7 @@ exports.uploadDocument = async (req, res) => {
         } else {
             const ocrResult = await Tesseract.recognize(req.file.path, 'eng');
             extractedText = ocrResult.data.text;
+            console.log(extractedText);
         }
 
         const llmResponse = await llm.invoke({

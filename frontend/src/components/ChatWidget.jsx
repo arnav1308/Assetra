@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useChat } from '../context/ChatContext';
 import { MessageSquare, X, Send, Bot, User } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import ReactMarkdown from "react-markdown";
 
 export default function ChatWidget() {
     const { messages, isOpen, isLoading, toggleChat, sendMessage } = useChat();
@@ -63,7 +64,7 @@ export default function ChatWidget() {
                                     </div>
                                 )}
                                 <div className={`max-w-[80%] rounded-xl p-3 text-sm ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-200'}`}>
-                                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                                    <p className="whitespace-pre-wrap"><ReactMarkdown>{msg.content}</ReactMarkdown></p>
                                 </div>
                             </div>
                         ))}
